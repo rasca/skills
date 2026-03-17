@@ -1,0 +1,29 @@
+project: skills
+base_branch: main
+
+worktree:
+  enabled: true
+
+setup:
+  copy: []
+
+windows:
+  - name: claude
+    directory: .
+    command: "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --dangerously-skip-permissions"
+    resume_command: "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --dangerously-skip-permissions --resume"
+  - name: shell
+    directory: .
+    command: ""
+  - name: cli
+    directory: .
+    command: ""
+  - name: web
+    directory: .
+    command: "python3 -m http.server 0.0.0.0:${web_port}"
+
+ports:
+  web: { start: 8080 }
+
+env:
+  - ANTHROPIC_API_KEY
